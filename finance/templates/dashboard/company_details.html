@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Company Details</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,400i|PT+Serif:700" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+</head>
+<body class="is-boxed has-animations">
+    <div class="body-wrap boxed-container">
+        <header class="site-header">
+             <div class="container">
+                <div class="site-header-inner">
+                    <div class="brand header-brand">
+                        <h1 class="m-0">
+                            <a href="#">
+                                <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <title></title>
+                                    <path d="M16 32C7.163 32 0 24.837 0 16S7.163 0 16 0s16 7.163 16 16-7.163 16-16 16zm0-10a6 6 0 1 0 0-12 6 6 0 0 0 0 12z" fill="url(#logo-gradient)" fill-rule="evenodd"/>
+                                </svg>
+                            </a>
+                        </h1>
+                    </div>
+                </div>
+             </div>
+        </header>
+
+        <main>
+            <section class="features section text-center">
+                <div class="container">
+                        <div class="features-inner section-inner has-top-divider">
+                            <h1 class="section-title mt-0">Company Details</h1>
+                            <div class="features-wrap">
+                                {% for k, v in company.items %}
+                                    <div class="feature is-revealing">
+                                        <div class="feature-inner">
+                                            <div class="feature-icon">
+                                            </div>
+                                            <h4 class="feature-title h3-mobile">{{ k }}</h4>
+                                            <p class="text-sm">{{ v }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="features-inner section-inner has-top-divider">
+                            <div class="features-wrap">
+                                <div class="feature-inner">
+                                    <div class="feature-icon">
+                                    </div>
+                                    <h4 class="feature-title h3-mobile">{{ 'Description' }}</h4>
+                                    <p class="text-sm">{{ Description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+
+                </div>
+            </section>
+        </main>
+
+    </div>
+    <script src="{% static 'home/js/main.min.js' %}"></script>
+</body>
+</html>

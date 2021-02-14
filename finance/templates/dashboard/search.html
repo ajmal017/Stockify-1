@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+    {% load staticfiles %}
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="img/fav.png">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title></title>
+
+	<!--
+			Google Font
+			============================================= -->
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,500,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500i" rel="stylesheet">
+
+	<!--
+			CSS
+			============================================= -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/linearicons.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/font-awesome.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/bootstrap.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/magnific-popup.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/nice-select.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/animate.min.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/owl.carousel.css' %}">
+	<link rel="stylesheet" href="{% static 'dashboard/search/css/main.css' %}">
+</head>
+
+<body>
+
+
+	<!-- Start Banner Area -->
+	<section class="home-banner-area relative">
+		<div class="container">
+			<div class="row fullscreen d-flex align-items-center justify-content-center">
+				<div class="banner-content col-lg-8 col-md-12">
+					<h1 class="wow fadeIn" data-wow-duration="4s">Search Companies</h1>
+
+					<div class="input-wrap">
+						<form method="post" id="find-stock" action="/dashboard/company/search" class="form-box d-flex justify-content-between">
+							{% csrf_token %}
+							<input type="text" placeholder="Enter a stock symbol?" class="form-control" name="stock">
+							<button type="submit" class="btn search-btn">Search</button>
+						</form>
+					</div>
+					<h4 class="text-white">Explore Selected Companies</h4>
+
+					<div class="courses pt-20">
+						{% for k in data %}
+							<a href={{ k.symbol }} data-wow-duration="1s" data-wow-delay=".3s"
+							   class="primary-btn transparent mr-10 mb-10 wow fadeInDown">{{ k.name }}</a>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ####################### End Scroll to Top Area ####################### -->
+
+	<script src="{% static 'dashboard/search/js/vendor/jquery-2.2.4.min.js' %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' %}" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+	 crossorigin="anonymous"></script>
+	<script src="{% static 'dashboard/search/js/vendor/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+	<script src="{% static 'dashboard/search/js/easing.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/hoverIntent.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/superfish.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/jquery.ajaxchimp.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/jquery.magnific-popup.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/owl.carousel.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/owl-carousel-thumb.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/parallax.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/waypoints.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/wow.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/jquery.counterup.min.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/mail-script.js' %}"></script>
+	<script src="{% static 'dashboard/search/js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load staticfiles %}
+    {% load brokers_extras %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
+    <title>All Orders</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static 'dashboard/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="{% static 'dashboard/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css' %}" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="{% static 'dashboard/css/animate.css' %}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{% static 'dashboard/css/style.css' %}" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="{% static 'dashboard/css/colors/blue-dark.css' %}" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="cssload-speeding-wheel"></div>
+    </div>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="fa fa-bars
+"></i></a>
+                <div class="top-left-part"><a class="logo" href="\"><b>
+                    <img src="../../static/dashboard/plugins/images/pixeladmin-logo.png" alt="home" />
+                </b><span class="hidden-xs">
+                    <img src="../../static/dashboard/plugins/images/pixeladmin-text.png" alt="home" /></span></a>
+                </div>
+                <ul class="nav navbar-top-links navbar-left m-l-20 hidden-xs">
+                </ul>
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li>
+                        <a class="button button-sm button-shadow"
+                           href="{% url 'auth:signout' %}">Signout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Left navbar-header -->
+       <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="\dashboard" class="waves-effect">
+                            <i class="fa fa-table fa-fw" aria-hidden="true"></i>
+                            <span class="hide-menu">Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'dashboard:orders' %}" class="waves-effect">
+                            <i class="fa fa-table fa-fw" aria-hidden="true"></i>
+                            <span class="hide-menu">My Trade History</span></a>
+                    </li>
+                    <li>
+                        <a href="/stocks/search" class="waves-effect">
+                            <i class="fa fa-columns fa-fw" aria-hidden="true"></i>
+                            <span class="hide-menu">Trade Stocks</span></a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/company/search" class="waves-effect">
+                            <i class="fa fa-columns fa-fw" aria-hidden="true"></i>
+                            <span class="hide-menu">Search Company Info</span></a>
+                    </li>
+                    <li>
+                        <a href="{% url 'dashboard:profile' %}" class="waves-effect">
+                            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+                            <span class="hide-menu">Profile</span></a>
+                    </li>
+                    {% if broker %}
+                    <li>
+                        <a href="/brokers/" class="waves-effect">
+                            <i class="fa fa-columns fa-fw" aria-hidden="true"></i>
+                            <span class="hide-menu">Broker Board</span></a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <!-- Left navbar-header end -->
+        <!-- Page Content -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Customers</h4> </div>
+                        <ol class="breadcrumb">
+                            <li><a href="#">Dashboard</a></li>
+                            <li class="active">Customers</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <!-- /row -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Customer</th>
+                                            <th>Email</th>
+                                            <!--Inbox?-->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for k in data %}
+                                    <tr class="clickable-row" 
+                                    data-href="{% url 'brokers:specific_customer' k.id %}">
+                                        <td>{{ k.first_name|addstr:" "|addstr:k.last_name }}</td>
+                                        <td>{{ k.email }}</td>
+                                    </tr>    
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </div>
+        <!-- /#page-wrapper -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="{% static 'dashboard/plugins/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static 'dashboard/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="{% static 'dashboard/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js' %}"></script>
+    <!--slimscroll JavaScript -->
+    <script src="{% static 'dashboard/js/jquery.slimscroll.j' %}"></script>
+    <!--Wave Effects -->
+    <script src="{% static 'dashboard/js/waves.js' %}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'dashboard/js/custom.min.js' %}"></script>
+    <!-- Brokers JavaScript -->
+    <script src="{% static 'dashboard/js/brokers.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<ul>
+    <div>
+        {% for k, v in stock_info.items %}
+            <li>
+                {{ k }}: {{ v }}
+            </li>
+        {% endfor %}
+    <br />
+        <form action="confirmation" method="post">
+            {% csrf_token %}
+            <p>Please confirm the stock you want to buy</p>
+            <input type="text" name="stock"><br>
+            <p>Please enter the number of shares you want to buy</p>
+            <input type="text" name="shares"><br>
+            <input type="submit" value="Buy">
+        </form>
+    </div>
+
+    <div>
+        <h3>Stock History</h3>
+         {% for k in data.keys %}
+            <ul class="w3-ul w3-card-4" style="width:50%">
+                <li><h3>{{ k }}</h3></li>
+                {% for x, y in data.k %}
+                <li>{{ data.k }} : {{ data.k }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+</ul>

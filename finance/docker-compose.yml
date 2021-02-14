@@ -1,0 +1,8 @@
+version: '2.1'
+
+services:
+  finance:
+    image: finance
+    build: .
+    ports:
+      - "8000:8000"
